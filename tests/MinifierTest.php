@@ -1,8 +1,8 @@
 <?php
 
-namespace Nckg\Minify\Test;
+namespace Eolme\Minify\Test;
 
-use Nckg\Minify\Minifier;
+use Eolme\Minify\Minifier;
 
 class MinifierTest extends TestCase
 {
@@ -56,8 +56,8 @@ class MinifierTest extends TestCase
     /** @test */
     public function it_minifies_an_entire_page_correct()
     {
-        $string = file_get_contents(__DIR__.'/_data/page.html');
-        $expected = file_get_contents(__DIR__.'/_data/page-minified.html');
+        $string = file_get_contents(__DIR__ . '/_data/page.html');
+        $expected = file_get_contents(__DIR__ . '/_data/page-minified.html');
         $this->assertMinifiedString($expected, $string);
     }
 

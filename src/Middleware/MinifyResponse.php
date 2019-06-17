@@ -1,10 +1,11 @@
 <?php
 
-namespace Nckg\Minify\Middleware;
+namespace Eolme\Minify\Middleware;
 
 use Closure;
-use Nckg\Minify\Minifier;
+use Eolme\Minify\Minifier;
 use Symfony\Component\HttpFoundation\StreamedResponse;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class MinifyResponse
 {
@@ -21,23 +22,42 @@ class MinifyResponse
         /** @var Response $response */
         $response = $next($request);
 
-        if (!app()->isLocal() && $this->isHtml($response)) {
-            $response->setContent((new Minifier())->html($response->getContent()));
+        if ($this->shouldProcess($response)) {
+            return $response->setContent((new Minifier())->html($response->getContent()));
         }
 
         return $response;
     }
 
-     /**
+    /**
      * Check if the content type header is html.
      *
      * @param \Illuminate\Http\Response $response
      *
      * @return bool
      */
-    protected function isHtml($response)
+    protected function isHtml($response): bool
     {
-        $type = $response->headers->get('Content-Type');
-        return strtolower(strtok($type, ';')) === 'text/html';
+        return 0 === mb_strpos($response->headers->get('Content-Type'), 'text/html');
+    }
+
+    /**
+     * Check if the response should be processed.
+     *
+     * @param \Illuminate\Http\Response $response
+     *
+     * @return bool
+     */
+    protected function shouldProcess($response): bool
+    {
+        if ($response instanceof BinaryFileResponse) {
+            return false;
+        }
+
+        if ($response instanceof StreamedResponse) {
+            return false;
+        }
+
+        return $this->isHtml($response);
     }
 }

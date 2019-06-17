@@ -1,6 +1,4 @@
 # HTML minifier
-[![Build Status](https://travis-ci.org/nckg/laravel-minify-html.svg?branch=master)](https://travis-ci.org/nckg/laravel-minify-html) [![Packagist](https://img.shields.io/packagist/v/nckg/laravel-minify-html.svg?maxAge=2592000?style=flat-square)](https://github.com/nckg/laravel-minify-html) [![Packagist](https://img.shields.io/packagist/dt/nckg/laravel-minify-html.svg?maxAge=2592000?style=flat-square)](https://github.com/nckg/laravel-minify-html) [![codecov](https://codecov.io/gh/nckg/laravel-minify-html/branch/master/graph/badge.svg)](https://codecov.io/gh/nckg/laravel-minify-html)
-
 ## Introduction
 
 Very, very simple html minifier with Laravel 5.x support.
@@ -32,7 +30,7 @@ $output = $minifier->html($string); // <a href="/foo" class="bar moo ">Hello Wor
 You can install the package via composer:
 
 ``` bash
-composer require nckg/laravel-minify-html
+composer require Eolme/laravel-minify-html
 ```
 If you are using Laravel you can add the middleware to your middleware providers
 
@@ -45,7 +43,7 @@ If you are using Laravel you can add the middleware to your middleware providers
  */
 protected $middleware = [
     ...
-    \Nckg\Minify\Middleware\MinifyResponse::class,
+    \Eolme\Minify\Middleware\MinifyResponse::class,
 ];
 ```
 

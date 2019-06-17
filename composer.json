@@ -4,12 +4,12 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Anton Petrov",
-            "email": "case@petrov.website"
-        },
-        {
             "name": "Nick Goris",
             "email": "nickgoris@gmail.com"
+        },
+        {
+            "name": "Anton Petrov",
+            "email": "case@petrov.website"
         }
     ],
     "require": {

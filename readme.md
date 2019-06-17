@@ -30,7 +30,7 @@ $output = $minifier->html($string); // <a href="/foo" class="bar moo ">Hello Wor
 You can install the package via composer:
 
 ``` bash
-composer require Eolme/laravel-minify-html
+composer require eolme/laravel-minify-html
 ```
 If you are using Laravel you can add the middleware to your middleware providers
 

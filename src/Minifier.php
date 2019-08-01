@@ -12,7 +12,7 @@ class Minifier
         // Shorten multiple white spaces
         '/\s{2,}/' => ' ',
         // Remove whitespaces between HTML tags
-        '/>\s{2,}</' => '><',
+        // '/>\s{2,}</' => '><',
         // Collapse new lines
         '/(\r?\n)/' => '',
     ];
